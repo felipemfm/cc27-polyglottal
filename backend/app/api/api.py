@@ -1,10 +1,21 @@
-import requests
-import json
-import os
+from calendar import weekday
+import requests, json, os, datetime
 
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# Function will determine if the "today" is a weekday, weekend or a holiday
+# and return the appropriate string to be used with the external API  
+def set_weekday():
+    with open('data/railway.json', 'r', encoding='utf-8', errors='ignore') as stream:
+        data = json.load(stream)
+        date = datetime.date.today()
+        if(date in data or date.weekday() == 0 or date.weekday() == 6):
+            return 'SaturdayHoliday'
+        else:
+            return "Weekday"
+        
 
 def read_railway_data():
     with open('data/railway.json', 'r', encoding='utf-8', errors='ignore') as stream:
@@ -29,11 +40,12 @@ apiKey = os.getenv('API_KEY')
 
 def get_station_time_table(operator, line, station, direction):
     station_time_table = []
+    weekday = set_weekday()
     params = {
         'acl:consumerKey':f'{apiKey}',
         'odpt:station':f'odpt.Station:{operator}.{line}.{station}',
         'odpt:railDirection':f'odpt.RailDirection:{operator}.{direction}',
-        'odpt:calendar':'odpt.Calendar:Weekday'
+        'odpt:calendar': f'odpt.Calendar:{weekday}'
     }
     url = 'https://api.odpt.org/api/v4/odpt:StationTimetable'
     data = requests.get(url, params=params).json()
