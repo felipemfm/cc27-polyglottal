@@ -3,3 +3,5 @@ configenv
 __pycache__
 env
 .env
+backend/data/railway.json
+backend/data/bus.json
