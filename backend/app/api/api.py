@@ -108,3 +108,15 @@ def read_bus_data():
         data = json.load(stream)
 
     return data
+
+
+def read_bus_data_by(title):
+    selected_data = []
+    with open('data/bus.json', 'r', encoding='utf-8', errors='ignore') as stream:
+        data = json.load(stream)
+
+    for entry in data:
+        if title in entry['title'].lower() or title in entry['title_en'].lower():
+            selected_data.append(entry)
+
+    return selected_data
