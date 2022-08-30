@@ -56,3 +56,28 @@ def get_station_time_table(operator, line, station, direction):
     
     return station_time_table
     
+def get_train_time_table(train_number):
+    train_time_table = []
+    params = {
+        'acl:consumerKey':f'{apiKey}',
+        'odpt:trainNumber':f'{train_number}'
+    }
+    url = 'https://api.odpt.org/api/v4/odpt:TrainTimetable'
+    data = requests.get(url, params=params).json()
+    
+    header = data[0]["odpt:railway"].replace('Railway', 'Station')
+    
+    for entry in data[0]['odpt:trainTimetableObject']:
+        if( 'odpt:departureTime' in entry):
+            time = entry['odpt:departureTime']
+            station = entry['odpt:departureStation']
+        else:
+            time = entry['odpt:arrivalTime']
+            station = entry['odpt:arrivalStation']
+    
+        train_time_table.append({
+            "time": time,
+            "station": station.replace(f"{header}.", "")
+            })
+       
+    return train_time_table
