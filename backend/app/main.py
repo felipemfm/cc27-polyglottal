@@ -21,6 +21,12 @@ def read_railway_data():
 def read_railway_data_by(line_or_station):
     return api.read_railway_data_by(line_or_station)
 
+
 @app.get("/railway/stationTimeTable/{operator}/{station}/{line}/{direction}")
 def get_station_time_table(operator, line, station, direction):
     return api.get_station_time_table(operator, line, station, direction)
+
+
+@app.get("/railway/trainTimeTable/{train_number}")
+def get_train_time_table(train_number):
+    return api.get_train_time_table(train_number)
