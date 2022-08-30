@@ -30,3 +30,8 @@ def get_station_time_table(operator, line, station, direction):
 @app.get("/railway/trainTimeTable/{train_number}")
 def get_train_time_table(train_number):
     return api.get_train_time_table(train_number)
+
+
+@app.get("/bus")
+def read_bus_data():
+    return api.read_bus_data()
