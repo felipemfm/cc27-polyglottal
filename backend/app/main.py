@@ -35,3 +35,8 @@ def get_train_time_table(train_number):
 @app.get("/bus")
 def read_bus_data():
     return api.read_bus_data()
+
+
+@app.get("/bus/{title}")
+def read_bus_data_by(title):
+    return api.read_bus_data_by(title)
