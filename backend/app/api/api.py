@@ -101,3 +101,10 @@ def get_train_time_table(train_number):
         })
 
     return train_time_table
+
+
+def read_bus_data():
+    with open('data/bus.json', 'r', encoding='utf-8', errors='ignore') as stream:
+        data = json.load(stream)
+
+    return data
