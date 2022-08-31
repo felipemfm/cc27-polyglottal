@@ -5,3 +5,4 @@ env
 .env
 backend/data/railway.json
 backend/data/bus.json
+node_modules
