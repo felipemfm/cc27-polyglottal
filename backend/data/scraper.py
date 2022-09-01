@@ -34,8 +34,8 @@ def create_railway_json():
             code = entry['odpt:lineCode']
             line_en = entry['odpt:railwayTitle']['en']
             line_ja = entry['odpt:railwayTitle']['ja']
-            ascending = entry["odpt:ascendingRailDirection"].split(":")
-            descending = entry["odpt:descendingRailDirection"].split(":")
+            ascending = entry["odpt:ascendingRailDirection"]
+            descending = entry["odpt:descendingRailDirection"]
 
             for station_element in entry['odpt:stationOrder']:
                 station = station_element["odpt:station"].replace(
@@ -49,8 +49,8 @@ def create_railway_json():
                     "line": line,
                     "line_en": line_en,
                     "line_ja": line_ja,
-                    "ascending": ascending[len(ascending) - 1].replace(f"{operator}.", ""),
-                    "descending": descending[len(descending) - 1].replace(f"{operator}.", ""),
+                    "ascending": ascending,
+                    "descending": descending,
                     "station": station,
                     "station_en": station_en,
                     "station_ja": station_ja
