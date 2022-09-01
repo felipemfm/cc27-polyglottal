@@ -1,5 +1,5 @@
-function Header() {
-  return <div>Title</div>;
+function Header({ time }) {
+  return <div>Title{time}</div>;
 }
 
 export default Header;

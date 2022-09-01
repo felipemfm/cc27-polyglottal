@@ -1,9 +1,9 @@
 import TrainTimeTable from "../modules/TrainTImeTable";
 
-function TrainTimeTableArea() {
+function TrainTimeTableArea({ time }) {
   return (
     <div className="container-flex">
-      <TrainTimeTable />
+      <TrainTimeTable time={time} />
     </div>
   );
 }

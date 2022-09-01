@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-function TrainTimeTable() {
+function TrainTimeTable({ time }) {
   const trainTimeTable = useSelector((state) => state.railway.trainTimeTable);
 
   return (

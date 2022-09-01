@@ -1,9 +1,9 @@
 import StationTimeTable from "../modules/StationTimeTable";
 
-function StationTimeTableArea() {
+function StationTimeTableArea({time}) {
   return (
     <div className="container-flex">
-      <StationTimeTable />
+      <StationTimeTable time={time}/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTrainTimeTable } from "../../store/slices/railwaySlice";
 
-function StationTimeTable() {
+function StationTimeTable({ time }) {
   const stationTimeTable = useSelector(
     (state) => state.railway.stationTimeTable
   );
@@ -22,7 +22,9 @@ function StationTimeTable() {
           {stationTimeTable.map((element, i) => (
             <tr
               key={i}
-              onClick={() => dispatch(fetchTrainTimeTable(element.train_number))}
+              onClick={() =>
+                dispatch(fetchTrainTimeTable(element.train_number))
+              }
             >
               <th scope="row">{i}</th>
               <td>{element.departure_time}</td>
