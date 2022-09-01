@@ -39,7 +39,7 @@ def create_railway_json():
 
             for station_element in entry['odpt:stationOrder']:
                 station = station_element["odpt:station"].replace(
-                    f'odpt.Station: {operator}.{line}.', "")
+                    f'odpt.Station:{operator}.{line}.', "")
                 station_en = station_element['odpt:stationTitle']['en']
                 station_ja = station_element['odpt:stationTitle']['ja']
                 json_obj.append({
