@@ -1,5 +1,11 @@
+import Input from "../modules/Input";
+
 function InputArea() {
-  return <div>InputArea</div>;
+  return (
+    <div>
+      <Input />
+    </div>
+  );
 }
 
 export default InputArea;
