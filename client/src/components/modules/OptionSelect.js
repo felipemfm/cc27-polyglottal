@@ -26,15 +26,13 @@ function OptionSelect() {
               key={`${i + 1}${element.ascending}`}
               value={`${element.operator}/${element.station}/${element.line}/${element.ascending}`}
             >
-              Line:{element.line_en} Station:{element.station_en} Direction:
-              {element.ascending}
+              {element.station_en}→{element.line_en}→{element.ascending}
             </option>
             <option
               key={`${i + 1}${element.descending}`}
               value={`${element.operator}/${element.station}/${element.line}/${element.descending}`}
             >
-              Line:{element.line_en} Station:{element.station_en} Direction
-              {element.descending}
+              {element.station_en}→{element.line_en}→{element.descending}
             </option>
           </>
         ))}
