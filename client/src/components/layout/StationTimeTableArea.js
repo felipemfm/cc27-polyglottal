@@ -1,5 +1,11 @@
+import StationTimeTable from "../modules/StationTimeTable";
+
 function StationTimeTableArea() {
-  return <div>Station Time Table</div>;
+  return (
+    <div className="container-flex">
+      <StationTimeTable />
+    </div>
+  );
 }
 
 export default StationTimeTableArea;
