@@ -5,7 +5,7 @@ import TrainTimeTableArea from "./components/layout/TrainTImeTableArea";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <InputArea />
       <StationTimeTableArea />
