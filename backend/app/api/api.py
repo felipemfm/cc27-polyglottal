@@ -49,7 +49,7 @@ def get_station_time_table(operator, line, station, direction):
     params = {
         'acl:consumerKey': f'{apiKey}',
         'odpt:station': f'odpt.Station:{operator}.{line}.{station}',
-        'odpt:railDirection': f'odpt.RailDirection:{operator}.{direction}',
+        'odpt:railDirection': direction,
         'odpt:calendar': f'odpt.Calendar:{weekday}'
     }
     url = 'https://api.odpt.org/api/v4/odpt:StationTimetable'
