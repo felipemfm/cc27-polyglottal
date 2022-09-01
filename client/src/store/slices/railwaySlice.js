@@ -3,13 +3,26 @@ import axios from "axios";
 
 const initialState = {
   data: [],
+  stationTimeTable: [],
   status: "idle",
 };
 
 export const fetchRailwayData = createAsyncThunk(
-  "railway/getRailwayData",
+  "railway/fetchRailwayData",
   async (lineOrStation) => {
-    const response = await axios.get(`http://localhost:8000/railway/${lineOrStation}`);
+    const response = await axios.get(
+      `http://localhost:8000/railway/${lineOrStation}`
+    );
+    return response.data;
+  }
+);
+
+export const fetchStationTimeTable = createAsyncThunk(
+  "railway/fetchStationTimeTable",
+  async (url) => {
+    const response = await axios(
+      `http://localhost:8000/railway/stationTimeTable/${url}`
+    );
     return response.data;
   }
 );
@@ -26,6 +39,13 @@ export const railwaySlice = createSlice({
       .addCase(fetchRailwayData.fulfilled, (state, action) => {
         state.status = "idle";
         state.data = action.payload;
+      })
+      .addCase(fetchStationTimeTable.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchStationTimeTable.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.stationTimeTable = action.payload;
       });
   },
 });
