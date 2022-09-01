@@ -1,5 +1,11 @@
+import TrainTimeTable from "../modules/TrainTImeTable";
+
 function TrainTimeTableArea() {
-  return <div>TrainTimeTableArea</div>;
+  return (
+    <div className="container-flex">
+      <TrainTimeTable />
+    </div>
+  );
 }
 
 export default TrainTimeTableArea;
