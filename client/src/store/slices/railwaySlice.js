@@ -6,7 +6,7 @@ const initialState = {
   status: "idle",
 };
 
-export const getRailwayData = createAsyncThunk(
+export const fetchRailwayData = createAsyncThunk(
   "railway/getRailwayData",
   async (lineOrStation) => {
     const response = await axios.get(`http://localhost:8000/railway/${lineOrStation}`);
@@ -20,16 +20,16 @@ export const railwaySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getRailwayData.pending, (state) => {
+      .addCase(fetchRailwayData.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(getRailwayData.fulfilled, (state, action) => {
+      .addCase(fetchRailwayData.fulfilled, (state, action) => {
         state.status = "idle";
         state.data = action.payload;
       });
   },
 });
 
-export const railwayData = (state) => state.railway.data;
+export const railwayState = (state) => state.railway.data;
 
 export default railwaySlice.reducer;
