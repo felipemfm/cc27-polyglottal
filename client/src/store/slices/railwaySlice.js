@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   data: [],
   stationTimeTable: [],
+  trainTimeTable: [],
   status: "idle",
 };
 
@@ -22,6 +23,16 @@ export const fetchStationTimeTable = createAsyncThunk(
   async (url) => {
     const response = await axios(
       `http://localhost:8000/railway/stationTimeTable/${url}`
+    );
+    return response.data;
+  }
+);
+
+export const fetchTrainTimeTable = createAsyncThunk(
+  "railway/fetchTrainTimeTable",
+  async (trainNumber) => {
+    const response = await axios(
+      `http://localhost:8000/railway/trainTimeTable/${trainNumber}`
     );
     return response.data;
   }
@@ -46,6 +57,13 @@ export const railwaySlice = createSlice({
       .addCase(fetchStationTimeTable.fulfilled, (state, action) => {
         state.status = "idle";
         state.stationTimeTable = action.payload;
+      })
+      .addCase(fetchTrainTimeTable.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchTrainTimeTable.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.trainTimeTable = action.payload;
       });
   },
 });
