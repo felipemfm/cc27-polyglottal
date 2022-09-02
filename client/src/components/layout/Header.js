@@ -1,5 +1,5 @@
 function Header({ time }) {
-  return <div>Title{time}</div>;
+  return <div>Tokyo PT Assistant {time}</div>;
 }
 
 export default Header;

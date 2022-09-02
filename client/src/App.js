@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 
 import Header from "./components/layout/Header";
 import InputArea from "./components/layout/InputArea";
-import StationTimeTableArea from "./components/layout/StationTimeTableArea";
-import TrainTimeTableArea from "./components/layout/TrainTImeTableArea";
+import Grid from "./components/layout/grid";
 
 function App() {
   const [time, setTime] = useState("");
@@ -15,14 +14,12 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-  console.log(time);
 
   return (
     <div className="container">
       <Header time={time} />
       <InputArea />
-      <StationTimeTableArea time={time} />
-      <TrainTimeTableArea time={time} />
+      <Grid time={time} />
     </div>
   );
 }

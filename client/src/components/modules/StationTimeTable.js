@@ -9,10 +9,10 @@ function StationTimeTable({ time }) {
 
   return (
     <div className="overflow-auto table-hover" style={{ maxHeight: "500px" }}>
-      <table className="table">
+      <p>Station Timetable</p>
+      <table className="table-sm">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Time</th>
             <th scope="col">Destination</th>
             <th scope="col">Type</th>
@@ -26,10 +26,9 @@ function StationTimeTable({ time }) {
                 dispatch(fetchTrainTimeTable(element.train_number))
               }
             >
-              <th scope="row">{i}</th>
               <td>{element.departure_time}</td>
-              <td>{element.destination.station}</td>
-              <td>{element.type}</td>
+              <td className="text-wrap">{element.destination.station}</td>
+              <td className="text-wrap">{element.type}</td>
             </tr>
           ))}
         </tbody>
